@@ -1,17 +1,16 @@
 
----
 
 # DigitalPaani Backend
 
-DigitalPaani Backend is a Node.js application that serves as the backend for the DigitalPaani project. It provides APIs for managing book entries, user authentication, and authorization using JSON Web Tokens (JWT). Password encryption is implemented using bcrypt for enhanced security.
-
-
+DigitalPaani Backend is a Node.js application that serves as the backend for the DigitalPaani project. It provides APIs for managing book entries, user authentication, and authorization using JSON Web Tokens (JWT). Password encryption is implemented using bcrypt (bcrypt) for enhanced security.
 
 ## Features
 
 - User authentication with JWT
 - CRUD operations for managing book entries (Create, Read, Update, Delete)
 - Filtering books by author or publication year
+- Searching books by search querries
+- Pagination  by page and limit
 
 ## Getting Started
 
