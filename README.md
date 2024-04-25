@@ -5,7 +5,7 @@
 
 # Book Management API
 
-This is a simple book management API built using Node.js and Express.js. It allows users to perform CRUD operations on book entries and provides user authentication using JWT (JSON Web Tokens).
+DigitalPaani Backend is a Node.js application that serves as the backend for the DigitalPaani project. It provides APIs for managing book entries, user authentication, and authorization using JSON Web Tokens (JWT). Password encryption is implemented using bcrypt (bcrypt) for enhanced security.
 
 ## Features
 
