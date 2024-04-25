@@ -1,8 +1,6 @@
 # digitalpaani_backend
 
 
-Certainly! Here's a template for a README.md file that provides detailed documentation for the book management API:
-
 ---
 
 # Book Management API
