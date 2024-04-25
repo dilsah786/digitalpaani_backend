@@ -64,8 +64,8 @@ This is a simple book management API built using Node.js and Express.js. It allo
 
 #### Authentication
 
-- `POST /auth/register`: Register a new user. Requires a JSON body with `username` and `password` fields.
-- `POST /auth/login`: Log in with existing user credentials. Requires a JSON body with `username` and `password` fields.
+- `POST /user/register`: Register a new user. Requires a JSON body with `name`, `email` and `password` fields.
+- `POST /user/login`: Log in with existing user credentials. Requires a JSON body with `email` and `password` fields.
 
 #### Book Management
 
