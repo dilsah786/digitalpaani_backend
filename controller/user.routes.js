@@ -10,12 +10,18 @@ const userController = express.Router();
 userController.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
 
+  if (!email || !name || !password) {
+    return res.json({ message: "Please enter your name , email and password" });
+  }
+
   // If a user is already registered
   console.log(name, email, password);
 
   const user = await UserModel.findOne({ email });
   if (user) {
-    return res.status("200").json({ status: "User Already Exist Please login " });
+    return res
+      .status("200")
+      .json({ status: "User Already Exist Please login " });
   }
 
   // Otherwise create a new user
@@ -24,7 +30,9 @@ userController.post("/register", async (req, res) => {
       // Store hash in your password DB.
       const user = await UserModel.create({ name, email, password: hash });
       console.log(user);
-      res.status(201).json({ status:`A user named ${name} registered successfully`})
+      res
+        .status(201)
+        .json({ status: `A user named ${name} registered successfully` });
     });
   } catch (err) {
     console.log(err);
@@ -35,13 +43,18 @@ userController.post("/register", async (req, res) => {
 
 userController.post("/login", async (req, res) => {
   const { email, password } = req.body;
-
+  if (!email || !password) {
+    return res.json({ message: "Please enter your email and password" });
+  }
   const user = await UserModel.findOne({ email: email });
 
   if (!user) {
     return res
       .status(200)
-      .json({ status:"Log in failed" , message: `User with email:- ${email} do not exist please register first ` });
+      .json({
+        status: "Log in failed",
+        message: `User with email:- ${email} do not exist please register first `,
+      });
   }
 
   const hashed_Pass = user.password;
@@ -53,7 +66,7 @@ userController.post("/login", async (req, res) => {
         return res.status("404").json({ status: "Invalid credential" });
       }
       const token = jwt.sign({ userId: user._id }, process.env.secrettoken);
-      res.status(200).json({ status: "Login SuccessFul", token: token });
+      res.status(200).json({ status: "Login Successful", token: token });
     });
   } catch (err) {
     console.log(err);
