@@ -1,4 +1,3 @@
-Certainly! Here's the updated README.md file with the dependency section included using the provided JSON file:
 
 ---
 
@@ -26,7 +25,7 @@ DigitalPaani Backend is a Node.js application that serves as the backend for the
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/your_username/digitalpaani_backend.git
+   git clone https://github.com/dilsah786/digitalpaani_backend.git
    ```
 
 2. Navigate to the project directory:
@@ -58,7 +57,7 @@ DigitalPaani Backend is a Node.js application that serves as the backend for the
 4. Create a `.env` file in the root directory and add the following environment variables:
 
    ```plaintext
-   PORT=3000
+   PORT=8080
    DB_URI=mongodb://localhost/book_management
    JWT_SECRET=your_secret_key
    ```
@@ -77,8 +76,8 @@ DigitalPaani Backend is a Node.js application that serves as the backend for the
 
 #### Authentication
 
-- `POST /auth/register`: Register a new user. Requires a JSON body with `username` and `password` fields.
-- `POST /auth/login`: Log in with existing user credentials. Requires a JSON body with `username` and `password` fields.
+- `POST /user/register`: Register a new user. Requires a JSON body with `name`, `email` and `password` fields.
+- `POST /user/login`: Log in with existing user credentials. Requires a JSON body with `email` and `password` fields.
 
 #### Book Management
 
@@ -88,19 +87,23 @@ DigitalPaani Backend is a Node.js application that serves as the backend for the
 - `PUT /books/:id`: Update a book entry by ID. Requires a JSON body with `title`, `author`, and `publicationYear` fields.
 - `DELETE /books/:id`: Delete a book entry by ID.
 
+- `Filter url/books?author=Dilnawaz` : Get a list of books with filtering by author
+- `Filter By publicationYear url/books?publicationYear=2020` : Get a list of books with Filtering books by publication year.
+- `Search url/books?q=query` : Get a list of books by search query
+- `Pagination url/books?page=1&limit=10` : Get a list of books by pagination using {page} & {limit} both values are dynamic.
+
+
+
 #### Authorization
 
 Protected routes require a valid JWT token obtained through the `/auth/login` endpoint in the `Authorization` header.
 
 ### Contributors
 
-- John Doe (@johndoe)
-- Jane Smith (@janesmith)
+- Md Dilnawaz Alam (@dilsah786)
 
 ### License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
-
-Feel free to customize the README file according to your project's specific requirements and preferences. Let me know if you need further assistance!
