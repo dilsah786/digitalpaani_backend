@@ -1,13 +1,12 @@
-# digitalpaani_backend
-
-
-Certainly! Here's a template for a README.md file that provides detailed documentation for the book management API:
+Certainly! Here's the updated README.md file with the dependency section included using the provided JSON file:
 
 ---
 
-# Book Management API
+# DigitalPaani Backend
 
-This is a simple book management API built using Node.js and Express.js. It allows users to perform CRUD operations on book entries and provides user authentication using JWT (JSON Web Tokens).
+DigitalPaani Backend is a Node.js application that serves as the backend for the DigitalPaani project. It provides APIs for managing book entries, user authentication, and authorization using JSON Web Tokens (JWT). Password encryption is implemented using bcrypt for enhanced security.
+
+
 
 ## Features
 
@@ -27,19 +26,33 @@ This is a simple book management API built using Node.js and Express.js. It allo
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/your_username/book-management-api.git
+   git clone https://github.com/your_username/digitalpaani_backend.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd book-management-api
+   cd digitalpaani_backend
    ```
 
 3. Install dependencies:
 
    ```bash
    npm install
+   ```
+
+   Or, manually add the following dependencies to your project's `package.json` file:
+
+   ```json
+   "dependencies": {
+       "bcrypt": "^5.1.1",
+       "cors": "^2.8.5",
+       "dotenv": "^16.4.5",
+       "express": "^4.19.2",
+       "jsonwebtoken": "^9.0.2",
+       "mongoose": "^8.3.2",
+       "nodemon": "^3.1.0"
+   }
    ```
 
 4. Create a `.env` file in the root directory and add the following environment variables:
@@ -81,8 +94,8 @@ Protected routes require a valid JWT token obtained through the `/auth/login` en
 
 ### Contributors
 
-- Md Dilnawaz Alam (@dilsah786)
-
+- John Doe (@johndoe)
+- Jane Smith (@janesmith)
 
 ### License
 
@@ -90,3 +103,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
+Feel free to customize the README file according to your project's specific requirements and preferences. Let me know if you need further assistance!
