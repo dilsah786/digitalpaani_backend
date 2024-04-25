@@ -6,11 +6,17 @@ const booksController = express.Router();
 
 // Create a new book
 booksController.post("/", async (req, res) => {
-  try {
+
     const { title, author, publicationYear } = req.body;
+
+    if(!title || !author || !publicationYear){
+        return res.json({message :"Please enter a title, author and publicationYear "})
+    }
+
+  try {
     const book = new BooksModel({ title, author, publicationYear });
     await book.save();
-    res.status(201).json(book);
+    res.status(201).json({message :"A new book added to collection Succesfull ", New_book:book});
   } catch (error) {
     console.error("Error creating book:", error);
     res.status(500).json({ message: "Internal server error" });
