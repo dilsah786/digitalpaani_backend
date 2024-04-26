@@ -7,14 +7,18 @@ const booksController = express.Router();
 // Create a new book
 booksController.post("/", async (req, res) => {
 
-    const { title, author, publicationYear } = req.body;
+    const { title, author, publicationYear,userId } = req.body;
+    
+    console.log(userId);
+
+    console.log(userId);
 
     if(!title || !author || !publicationYear){
         return res.json({message :"Please enter a title, author and publicationYear "})
     }
 
   try {
-    const book = new BooksModel({ title, author, publicationYear });
+    const book = new BooksModel({ title, author, publicationYear ,userId});
     await book.save();
     res.status(201).json({message :"A new book added to collection Succesfull ", New_book:book});
   } catch (error) {
@@ -47,7 +51,7 @@ booksController.get("/", async (req, res) => {
         ],
       });
       return res.json({ status: "Here is your Book", Book_Details: books });
-    }
+    } 
 
     // Get all books according to pagination
     if (page && limit) {
@@ -109,16 +113,16 @@ booksController.get("/:id", async (req, res) => {
 // Update a book by ID
 booksController.patch("/:id", async (req, res) => {
   try {
-    const { title, author, publicationYear } = req.body;
+    const { title, author, publicationYear,userId } = req.body;
     const id = req.params.id;
 
-    const updatedBook = await BooksModel.findByIdAndUpdate(
-      id,
+    const updatedBook = await BooksModel.findOneAndUpdate(
+      {_id:id,userId:userId},
       { title, author, publicationYear },
       { new: true }
     );
     if (!updatedBook) {
-      return res.status(404).json({ message: "Book not found" });
+      return res.status(404).json({ message: "You have no access to update this book " });
     }
     res.json({ status: "Book updated successfully", updatedBook });
   } catch (error) {
@@ -129,10 +133,13 @@ booksController.patch("/:id", async (req, res) => {
 
 // Delete a book by ID
 booksController.delete("/:id", async (req, res) => {
+  const {userId } = req.body;
+  const id = req.params.id;
+
   try {
-    const deletedBook = await BooksModel.findByIdAndDelete(req.params.id);
+    const deletedBook = await BooksModel.findOneAndDelete({_id:id,userId:userId});
     if (!deletedBook) {
-      return res.status(404).json({ message: "Book not found" });
+      return res.status(404).json({ message: "You have no access to delete this book from collection" });
     }
     res.json({ message: "Book deleted successfully" });
   } catch (error) {
